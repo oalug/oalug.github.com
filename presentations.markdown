@@ -23,7 +23,7 @@ title: "Past Presentations"
 * May 25: Aaron Toponce, KVM
 * April 27: Aaron Toponce, Discussion on the new RHEL 6 and Ubuntu 10.04 releases
 * March 30: Clint Savage & Ceaser Larry, Configuration Management (Puppet, Chef)
-* February 23: Clint Savage, A Git Branching Model
+* February 23: Clint Savage, [A Git Branching Model](http://nvie.com/git-model)
 * January 26: Shane Rose, Hylafax
 
 2009
