@@ -5,9 +5,14 @@ title: "Past Presentations"
 
 2011
 ----
-    * Salt
-    * ???
-    * ???
+* August 30: Aaron Toponce, OpenPGP/GnuPG
+* July 26: Seth House, Git Internalsl
+* June 26: Seth House, Salt
+* May 31: Aaron Toponce, iptables. Seth House, rsync
+* April 26: Nick Brooks, Nagios
+* March 29: Seth House, xargs and TaskWarrior
+* February 22: Matt Mackenzie, LVM
+* January 25: Erik Johnson, Redis
 
 2010
 ----
