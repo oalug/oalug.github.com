@@ -5,6 +5,7 @@ title: "Past Presentations"
 
 2011
 ----
+* September 27: Erik Johnson, [dnsmasq](https://github.com/downloads/oalug/oalug.github.com/dnsmasq.pdf); Clint Savage, [RPM packaging](https://groups.google.com/forum/#!topic/oalug/O-GMPbjTEws)
 * August 30: Aaron Toponce, OpenPGP/GnuPG
 * July 26: Seth House, Git Internalsl
 * June 26: Seth House, [Salt](https://github.com/whiteinge/presentations/tree/master/oalug_2011-06-28_salt)
