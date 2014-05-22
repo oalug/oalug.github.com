@@ -1,3 +1,4 @@
 exclude:
 - README
 - CNAME
+markdown: kramdown
