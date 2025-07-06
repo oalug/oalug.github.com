@@ -1,0 +1,206 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: white;
+    color: #2a2b2d;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+}
+
+header h1 {
+    font-size: clamp(1.2em, 3vw, 1.8em);
+    margin: 0;
+    text-align: left;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1em;
+}
+
+.header-nav a {
+    color: #2a2b2d;
+    text-decoration: none;
+    font-size: clamp(0.9em, 2vw, 1.1em);
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.header-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-section {
+    background-color: #3e8675;
+    color: white;
+    padding: 6em 1em 2em 1em;
+    border-bottom: 4px solid #3e8675;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.header-text {
+    flex: 0 0 50%;
+    text-align: left;
+    min-width: 300px;
+}
+
+.header-image {
+    flex: 0 0 40%;
+}
+
+.header-image img {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.hero-section p.header-description-main {
+    font-size: clamp(1.1em, 2.5vw, 1.4em);
+    margin: 0.5em 0;
+    line-height: 1.4;
+}
+
+.hero-section p.header-description-secondary {
+    font-size: clamp(0.9em, 2vw, 1.2em);
+    margin: 0.5em 0;
+    line-height: 1.4;
+    color: #DDE4EB;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-text {
+        text-align: center;
+    }
+}
+
+section {
+    padding: 30px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px;
+    margin-top: 0;
+}
+
+.meetings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.meeting-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.meeting-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.meeting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #3e7386;
+    padding-bottom: 0.5em;
+}
+
+.meeting-header h3 {
+    margin: 0;
+    color: #3e7386;
+    font-size: 1.3em;
+}
+
+.meeting-date {
+    background-color: #3e7386;
+    color: white;
+    padding: 0.3em 0.8em;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.meeting-details p {
+    margin: 0.5em 0;
+    color: #2a2b2d;
+}
+
+.meeting-description {
+    font-style: italic;
+    color: #666;
+    margin: 1em 0 !important;
+}
+
+.calendar-link {
+    display: inline-block;
+    background-color: #3e7386;
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-link:hover {
+    background-color: #2a5a4f;
+}

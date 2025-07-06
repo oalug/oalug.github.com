@@ -1,70 +1,71 @@
----
-layout: default
-title: "Ogden Area Linux User Group"
-url-map: http://maps.google.com/maps?q=201+East+2150+North+Suite+C,+84041
-url-calendar: http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.google.com%2Fcalendar%2Ffeeds%2Frk4g9n51ur5moamgh8b1ecbf9c%2540group.calendar.google.com%2Fpublic%2Fbasic
-url-archives: /past_presentations
-url-group: https://groups.google.com/forum/#!forum/oalug
-url-subscribe: oalug+subscribe@googlegroups.com
-url-post: oalug@googlegroups.com
----
-<h1>Ogden-Area Linux User Group</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ogden Area Linux Users Group (OALUG)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Ogden Area Linux Users Group</h1>
+            <nav class="header-nav">
+                <a href="past-meetings.html">Past Meetings</a>
+                <a href="https://discord.gg/your-discord-link">Discord</a>
+                <a href="https://groups.google.com/g/oalug">Google Group</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero-section">
+        <div class="header-content">
+            <div class="header-text">
+                <p class="header-description-main">We are a community of students, professionals, and enthusiasts dedicated to Linux and free &amp; open source software/hardware.</p>
+                <p class="header-description-secondary">The group serves Weber, Davis, and Morgan counties in Utah. We welcome absolutely anyone who is interested in learning, teaching, and helping the local community about technology. Membership is open and free, as are our meetings.</p>
+            </div>
+            <div class="header-image">
+                <img src="banner2.png" alt="OALUG Banner">
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <h2>Upcoming Meetings</h2>
+        <div id="meetings" class="meetings-container">
+            <!-- Meeting items will be inserted here -->
+        </div>
+    </section>
+    <script>
+        const meetings = [
+            { date: '2025-07-16', time: '6:30 PM', location: '<a href="https://g.co/kgs/LR2U8wU">Weber County Southwest branch Library in Roy.</a> Meeting will be in the board room.' , calendarLink: 'https://calendar.app.google/LhNFUy7V2Qqwnhep6', topic: 'OALUG Modding 3D Printers presented by David Klingenberg', description: 'This meeting will be on building and modding 3D printer hardware and firmware. David has over 10 years of experience with 3D printing and has been modding them to add new features and improve their performance for just as long!' },
+        ];
 
-<p>Welcome to the Ogden Area Linux Users Group (OALUG). We are a group of
-students, professionals, and hobbyists who share a passion for Linux, and free
-and open source software. The group serves Weber, Davis, and Morgan counties.
-We welcome absolutely anyone who is interested in learning, teaching, and
-helping the local community.</p>
-
-<div class="meetings">
-    <h2>Meetings</h2>
-
-    <p>We meet on the last Wednesday of every month.
-    <br>
-    7:00 to 9:00 P.M.</p>
-
-    <p><a href="{{ page.url-calendar }}"><img
-        src="http://www.google.com/calendar/images/ext/gc_button1.gif"></a></p>
-
-    <address>
-        Check mailing list for location.
-    </address>
-<!--
-    <p><a href="{{ page.url-map }}">(Map)</a>.</p>
--->
-</div>
-
-<div class="archives">
-    <h2>Past presentations</h2>
-
-    <p><a href="{{ page.url-archives }}">View a list of our past
-        presentations</a>.</p>
-</div>
-
-<div class="membership">
-    <h3>Membership</h3>
-
-    <p>Membership is open and free, as are our meetings. We will never charge
-    to become a member, attend any meeting, or participate in the group.
-    Membership is open to all ages, races and gender, regardless of political
-    affiliation, sexual preference, marital status, creed, physical or mental
-    disability, or on the basis of the exercise of rights secured by the First
-    Amendment of the United States Constitution.</p>
-
-    <h4>Mailing List</h4>
-
-    <p>Our mailing list is hosted on Google Groups:<br>
-    <a href="{{ page.url-group }}">{{ page.url-group }}</a></p>
-
-    <p>To join the list without a Google Account, send a blank email to
-    <a href="mailto:{{ page.url-subscribe }}">{{ page.url-subscribe }}</a>.<br>
-    To post to the list, send an email to
-    <a href="mailto:{{ page.url-post }}">{{ page.url-post }}</a>.</p>
-
-    <h4>IRC (Internet Relay Chat)</h4>
-
-    <p>Server: irc.freenode.net<br>
-    Channel: #oalug<br>
-    <span class="small quiet">(Freenode cloaks available. Ping
-        eightyeight.)</span></p>
-</div>
+        const meetingsContainer = document.getElementById('meetings');
+        meetings.forEach(meeting => {
+            const card = document.createElement('div');
+            card.className = 'meeting-card';
+            
+            // Format date to MMM DD, YYYY
+            const dateObj = new Date(meeting.date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            
+            card.innerHTML = `
+                <div class="meeting-header">
+                    <h3>${meeting.topic}</h3>
+                    <span class="meeting-date">${formattedDate}</span>
+                </div>
+                <div class="meeting-details">
+                    <p><strong>Time:</strong> ${meeting.time}</p>
+                    <p><strong>Location:</strong> ${meeting.location}</p>
+                    <p class="meeting-description">${meeting.description}</p>
+                    <a href="${meeting.calendarLink}" target="_blank" class="calendar-link">Add to Calendar</a>
+                </div>
+            `;
+            meetingsContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>

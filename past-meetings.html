@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Meetings - Ogden Area Linux Users Group (OALUG)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .main-content {
+            display: flex;
+            gap: 2em;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6em 1em 2em 1em;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 6em;
+            width: 200px;
+            height: fit-content;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar h3 {
+            margin-top: 0;
+            color: #3e7386;
+            font-size: 1.2em;
+            border-bottom: 2px solid #3e7386;
+            padding-bottom: 0.5em;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li {
+            margin: 0.5em 0;
+        }
+        
+        .sidebar a {
+            color: #3e7386;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.3em 0;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .sidebar a:hover {
+            color: #2a5a4f;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .year-section {
+            margin-bottom: 3em;
+        }
+        
+        .year-section h2 {
+            color: #3e7386;
+            font-size: 2em;
+            border-bottom: 3px solid #3e7386;
+            padding-bottom: 0.5em;
+            margin-bottom: 1.5em;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Ogden Area Linux Users Group</h1>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="past-meetings.html">Past Meetings</a>
+                <a href="https://discord.gg/your-discord-link">Discord</a>
+                <a href="https://groups.google.com/g/oalug">Google Group</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <aside class="sidebar">
+            <h3>Jump to Year</h3>
+            <ul id="year-nav">
+                <!-- Year navigation will be inserted here -->
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <h1>Past Meetings</h1>
+            <div id="past-meetings-content">
+                <!-- Past meetings content will be inserted here -->
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const pastMeetings = [
+            { date: '2025-04-10', time: '6:30 PM', location: '<a href="https://g.co/kgs/LR2U8wU">Weber County Southwest branch Library in Roy.</a> Meeting will be in the board room.', topic: 'Running a personal and private ChatGPT at home by Clayton Ramstedt', description: 'Learn about how Large Language Models (LLM) work and what software and hardware tools you need to run AI applications in your own homelab!' },
+            { date: '2025-06-10', time: '6:30 PM', location: '<a href="https://g.co/kgs/LR2U8wU">Weber County Southwest branch Library in Roy.</a> Meeting will be in the board room.', topic: 'Project Night', description: "Bring any open-source or DIY project you've been working on to share with the group. If you can't physically bring anything, pictures are encouraged!" },
+        ];
+
+        // Group meetings by year
+        const meetingsByYear = {};
+        pastMeetings.forEach(meeting => {
+            const year = new Date(meeting.date).getFullYear();
+            if (!meetingsByYear[year]) {
+                meetingsByYear[year] = [];
+            }
+            meetingsByYear[year].push(meeting);
+        });
+
+        // Sort years in descending order
+        const sortedYears = Object.keys(meetingsByYear).sort((a, b) => b - a);
+
+        // Generate year navigation
+        const yearNav = document.getElementById('year-nav');
+        sortedYears.forEach(year => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#year-${year}">${year}</a>`;
+            yearNav.appendChild(li);
+        });
+
+        // Generate content
+        const content = document.getElementById('past-meetings-content');
+        sortedYears.forEach(year => {
+            const yearSection = document.createElement('div');
+            yearSection.className = 'year-section';
+            yearSection.id = `year-${year}`;
+            
+            const yearHeader = document.createElement('h2');
+            yearHeader.textContent = year;
+            yearSection.appendChild(yearHeader);
+            
+            const meetingsContainer = document.createElement('div');
+            meetingsContainer.className = 'meetings-container';
+            
+            // Sort meetings within year by date (most recent first)
+            meetingsByYear[year].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            meetingsByYear[year].forEach(meeting => {
+                const card = document.createElement('div');
+                card.className = 'meeting-card';
+                
+                // Format date to MMM DD, YYYY
+                const dateObj = new Date(meeting.date);
+                const formattedDate = dateObj.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                
+                card.innerHTML = `
+                    <div class="meeting-header">
+                        <h3>${meeting.topic}</h3>
+                        <span class="meeting-date">${formattedDate}</span>
+                    </div>
+                    <div class="meeting-details">
+                        <p><strong>Time:</strong> ${meeting.time}</p>
+                        <p><strong>Location:</strong> ${meeting.location}</p>
+                        <p class="meeting-description">${meeting.description}</p>
+                    </div>
+                `;
+                meetingsContainer.appendChild(card);
+            });
+            
+            yearSection.appendChild(meetingsContainer);
+            content.appendChild(yearSection);
+        });
+    </script>
+</body>
+</html>
