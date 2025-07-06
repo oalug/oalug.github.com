@@ -12,7 +12,7 @@
             <h1>Ogden Area Linux Users Group</h1>
             <nav class="header-nav">
                 <a href="past-meetings.html">Past Meetings</a>
-                <a href="https://discord.gg/your-discord-link">Discord</a>
+                <a href="https://discord.gg/Nngvhy8Yfv">Discord</a>
                 <a href="https://groups.google.com/g/oalug">Google Group</a>
             </nav>
         </div>
@@ -42,7 +42,7 @@
     </section>
     <script>
         const announcements = [
-             { title: 'Sample Announcement', content: 'This is a sample announcement. You can add your announcements here.', date: '2025-07-06' },
+            { title: 'Call For Presentors', content: "We are always looking for people in the Ogden area to present on Linux and other open-source topics! Ideally we want to have meetings once a month, but often we don't have enough presentations lined up to sustain that pace. Even if you're personally not comfortable presenting, if you know someone who you would love to hear present on a techncial topic they are knowledgable on for about an hour, let us know! Submit all presentation requests either by posting a message on the OALUG Google Group, or DM-ing Claytheon on the OALUG Discord server.", date: '' },
         ];
 
         const meetings = [
@@ -54,18 +54,22 @@
             const card = document.createElement('div');
             card.className = 'meeting-card';
             
-            // Format date to MMM DD, YYYY
-            const dateObj = new Date(announcement.date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
+            let dateSection = '';
+            if (announcement.date) {
+                // Format date to MMM DD, YYYY
+                const dateObj = new Date(announcement.date);
+                const formattedDate = dateObj.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                dateSection = `<span class="meeting-date">${formattedDate}</span>`;
+            }
             
             card.innerHTML = `
                 <div class="meeting-header">
                     <h3>${announcement.title}</h3>
-                    <span class="meeting-date">${formattedDate}</span>
+                    ${dateSection}
                 </div>
                 <div class="meeting-details">
                     <p class="meeting-description">${announcement.content}</p>
