@@ -40,15 +40,18 @@
             <!-- Meeting items will be inserted here -->
         </div>
     </section>
+    <script src="meetings-data.js"></script>
     <script>
         const announcements = [
             { title: 'Call For Presentors', content: "We are always looking for people in the Ogden, UT area to present on Linux and other open-source topics! Ideally we want to have meetings once a month, but often we don't have enough presentations lined up to sustain that pace. Even if you are personally not comfortable presenting, if you know someone who you would love to hear present on a techncial topic they are knowledgable on for about an hour, let us know! Submit all presentation requests either by posting a message on the OALUG Google Group, or on the #general channel on the OALUG Discord server.", date: '' },
         ];
 
-        const meetings = [
-            <!-- { date: '2025/10/15', time: '6:30 PM', location: '<a href="https://g.co/kgs/LR2U8wU">Weber County Southwest branch Library in Roy.</a> Meeting will be in the first third of the auditorium.', topic: '', calendarLink: '', description: ''}, -->
-            { date: '2026/03/17', time: '6:30 PM', location: '<a href="https://g.co/kgs/LR2U8wU">Weber County Southwest branch Library in Roy.</a> Meeting will be in the classroom directly across from the boardroom.', topic: 'Bring Your Own Board (B.Y.O.B) - An Introduction to Microcontrollers', calendarLink: 'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NW5hYXE2dG5kYjdpbGx2bmttYjZ1N24wM3Ugcms0ZzluNTF1cjVtb2FtZ2g4YjFlY2JmOWNAZw&tmsrc=rk4g9n51ur5moamgh8b1ecbf9c%40group.calendar.google.com', description: 'We will be holding a show and tell night about the wild world of microcontrollers! If you are already a seasoned veteran with embedded electronics, grab your favorite microcontroller and some cool electronic components from your scrap heap and show them off to everyone! And if you don\'t know anything about microcontrollers, we will have a presentation by Ryan Zaugg on the basics of the ESP32, one of the most popular and accessible microcontrollers out there.' },
-        ];
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const upcomingMeetings = allMeetings.filter(meeting => {
+            const meetingDate = new Date(meeting.date);
+            return meetingDate >= today;
+        });
 
         const announcementsContainer = document.getElementById('announcements');
         announcements.forEach(announcement => {
@@ -80,7 +83,7 @@
         });
 
         const meetingsContainer = document.getElementById('meetings');
-        meetings.forEach(meeting => {
+        upcomingMeetings.forEach(meeting => {
             const card = document.createElement('div');
             card.className = 'meeting-card';
             
